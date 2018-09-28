@@ -39,8 +39,8 @@ main {
 
 #head {
     position: relative;
-    width: 400px;
-    height: 350px;
+    width: 350px;
+    height: 300px;
     background-color: #008EE3;
     border-radius: 50% 50% 25% 25%/55% 55% 45% 45%;
     -webkit-box-shadow: inset -2px -2px 20px rgba(0, 0, 0, 0.1), inset -5px -5px 40px rgba(0, 0, 0, 0.3);
@@ -50,18 +50,18 @@ main {
 #face {
     position: absolute;
     bottom: 0;
-    left: calc(50% - 155px);
-    width: 310px;
-    height: 260px;
+    left: calc(50% - 140px);
+    width: 280px;
+    height: 230px;
     background-color: #fff;
     border-radius: 50% 50% 25% 25%/55% 55% 45% 45%;
 }
 
 #face .eye {
     position: absolute;
-    top: -40px;
-    width: 90px;
-    height: 110px;
+    top: -30px;
+    width: 80px;
+    height: 100px;
     background-color: #fff;
     border-radius: 50%;
     border: 2px solid #000;
@@ -92,7 +92,7 @@ main {
 }
 
 #eye_left {
-    left: 21%;
+    left: 21.6%;
 }
 
 #eye_left .eyeball, #eye_left .eyeball::after {
@@ -100,7 +100,7 @@ main {
 }
 
 #eye_right {
-    right: 21%;
+    right: 21.6%;
 }
 
 #eye_right .eyeball, #eye_right .eyeball::after {
@@ -110,9 +110,9 @@ main {
 #nose {
     position: absolute;
     top: 46px;
-    left: calc(50% - 15px);
-    width: 30px;
-    height: 30px;
+    left: calc(50% - 13px);
+    width: 26px;
+    height: 26px;
     background-color: #C70000;
     border-radius: 50%;
     -webkit-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
@@ -132,28 +132,28 @@ main {
 
 #nose_line {
     position: absolute;
-    top: 76px;
+    top: 72px;
     left: calc(50% - 1px);
     width: 2px;
-    height: 120px;
-    background-color: #000;
+    height: 100px;
+    background-color: #666;
 }
 
 .beard {
     position: absolute;
-    top: 75px;
-    width: 120px;
+    top: 80px;
+    width: 100px;
 }
 
 .beard div {
     width: 100%;
-    height: 25px;
+    height: 22px;
     border-top: 1px solid #000;
     border-radius: 50%;
 }
 
 #beard_left {
-    left: -5%;
+    left: -1%;
     -webkit-transform-origin: right;
     transform-origin: right;
     -webkit-transform: rotate(10deg);
@@ -161,7 +161,7 @@ main {
 }
 
 #beard_right {
-    right: -5%;
+    right: -1%;
     -webkit-transform-origin: left;
     transform-origin: left;
     -webkit-transform: rotate(-10deg);
@@ -171,19 +171,19 @@ main {
 #mouth {
     position: absolute;
     bottom: 30px;
-    left: calc(50% - 130px);
-    width: 260px;
-    height: 200px;
+    left: calc(50% - 115px);
+    width: 230px;
+    height: 180px;
     border-bottom: 2px solid #000;
     border-radius: 50%;
 }
 
 #neck {
     position: absolute;
-    top: 176px;
+    top: 172px;
     z-index: -1;
-    width: 330px;
-    height: 200px;
+    width: 280px;
+    height: 150px;
     border-radius: 50% 50% 20% 20% / 50% 50% 50% 50%;
     background: #e30000;
     -webkit-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
@@ -192,7 +192,7 @@ main {
 
 #neck .gloss {
     position: absolute;
-    bottom: 20px;
+    bottom: 15px;
     left: 18%;
     width: 60px;
     height: 4px;
@@ -202,10 +202,10 @@ main {
 
 #neck .bell {
     position: absolute;
-    bottom: -20px;
-    left: calc(50% - 23px);
-    width: 46px;
-    height: 46px;
+    bottom: -18px;
+    left: calc(50% - 19px);
+    width: 38px;
+    height: 38px;
     border-radius: 50%;
     border: 2px solid #000;
     background-color: #FFDD2E;
@@ -215,10 +215,10 @@ main {
 
 #neck .bell .ring {
     position: absolute;
-    bottom: 43%;
-    left: -4px;
-    width: 50px;
-    height: 10px;
+    bottom: 44%;
+    left: -3px;
+    width: 40px;
+    height: 8px;
     border: 2px solid #000;
     background-color: #FFDD2E;
     border-radius: 6px;
@@ -229,8 +229,8 @@ main {
     position: absolute;
     top: 76%;
     left: 50%;
-    width: 8px;
-    height: 8px;
+    width: 6px;
+    height: 6px;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     background-color: #555;
@@ -244,7 +244,7 @@ main {
     bottom: -1px;
     left: 50%;
     width: 2px;
-    height: 8px;
+    height: 6px;
     -webkit-transform: translateX(-50%);
     transform: translateX(-50%);
     border-radius: 50%;

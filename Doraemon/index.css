@@ -1,0 +1,231 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    align-items: center;
+    background-color: #ADD8E6;
+}
+
+main {
+    position: relative;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+#head {
+    position: relative;
+    width: 400px;
+    height: 350px;
+    background-color: #008EE3;
+    border-radius: 50% 50% 25% 25%/55% 55% 45% 45%;
+    box-shadow: inset -2px -2px 20px rgba(0, 0, 0, 0.1), inset -5px -5px 40px rgba(0, 0, 0, 0.3);
+}
+
+#face {
+    position: absolute;
+    bottom: 0;
+    left: calc(50% - 155px);
+    width: 310px;
+    height: 260px;
+    background-color: #fff;
+    border-radius: 50% 50% 25% 25%/55% 55% 45% 45%;
+}
+
+#face .eye {
+    position: absolute;
+    top: -40px;
+    width: 90px;
+    height: 110px;
+    background-color: #fff;
+    border-radius: 50%;
+    border: 2px solid #000;
+    box-shadow: 5px 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.eye .eyeball {
+    position: absolute;
+    top: 45%;
+    width: 20px;
+    height: 26px;
+    background-color: #000;
+    border-right: none;
+    border-radius: 50%;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.eye .eyeball::after {
+    content: '';
+    position: absolute;
+    top: 8px;
+    width: 10px;
+    height: 10px;
+    background-color: #fff;
+    border-radius: 50%;
+}
+
+#eye_left {
+    left: 21%;
+}
+
+#eye_left .eyeball, #eye_left .eyeball::after {
+    right: 0;
+}
+
+#eye_right {
+    right: 21%;
+}
+
+#eye_right .eyeball, #eye_right .eyeball::after {
+    left: 0;
+}
+
+#nose {
+    position: absolute;
+    top: 46px;
+    left: calc(50% - 15px);
+    width: 30px;
+    height: 30px;
+    background-color: #C70000;
+    border-radius: 50%;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+#nose::after {
+    content: '';
+    position: absolute;
+    top: calc(50% - 5px);
+    right: 0;
+    width: 10px;
+    height: 10px;
+    background-color: #fff;
+    border-radius: 50%;
+}
+
+#nose_line {
+    position: absolute;
+    top: 76px;
+    left: calc(50% - 1px);
+    width: 2px;
+    height: 120px;
+    background-color: #000;
+}
+
+.beard {
+    position: absolute;
+    top: 75px;
+    width: 120px;
+}
+
+.beard div {
+    width: 100%;
+    height: 25px;
+    border-top: 1px solid #000;
+    border-radius: 50%;
+}
+
+#beard_left {
+    left: -5%;
+    transform-origin: right;
+    transform: rotate(10deg);
+}
+
+#beard_right {
+    right: -5%;
+    transform-origin: left;
+    transform: rotate(-10deg);
+}
+
+#mouth {
+    position: absolute;
+    bottom: 30px;
+    left: calc(50% - 130px);
+    width: 260px;
+    height: 200px;
+    border-bottom: 2px solid #000;
+    border-radius: 50%;
+}
+
+#neck {
+    position: absolute;
+    top: 176px;
+    z-index: -1;
+    width: 330px;
+    height: 200px;
+    border-radius: 50% 50% 20% 20% / 50% 50% 50% 50%;
+    background: #e30000;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+#neck .gloss {
+    position: absolute;
+    bottom: 20px;
+    left: 18%;
+    width: 60px;
+    height: 4px;
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+#neck .bell {
+    position: absolute;
+    bottom: -20px;
+    left: calc(50% - 23px);
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    border: 2px solid #000;
+    background-color: #FFDD2E;
+    box-shadow: inset -2px -2px 6px rgba(0, 0, 0, 0.3);
+}
+
+#neck .bell .ring {
+    position: absolute;
+    bottom: 43%;
+    left: -4px;
+    width: 50px;
+    height: 10px;
+    border: 2px solid #000;
+    background-color: #FFDD2E;
+    border-radius: 6px;
+}
+
+#neck .bell::before {
+    content: '';
+    position: absolute;
+    top: 76%;
+    left: 50%;
+    width: 8px;
+    height: 8px;
+    transform: translate(-50%, -50%);
+    background-color: #555;
+    border-radius: 50%;
+    border: 2px solid #000;
+}
+
+#neck .bell::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 50%;
+    width: 2px;
+    height: 8px;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    background-color: #000;
+}

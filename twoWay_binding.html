@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>双向绑定</title>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="inputValue">
+    <div>
+        <span>值展示：</span>
+        <span v-text="inputValue"></span>
+    </div>
+    <button v-click="changeText">重置</button>
+</div>
+
+<script>
+    function Vue(opt) {
+        if (opt === undefined || !opt.ele) {
+            return {};
+        }
+        this.ele = opt.ele;     // dom区间
+        this.data = opt.data;   // 数据
+        this.methods = opt.methods;     // 方法
+        this.init();    // 初始化
+    }
+    // 根据dom上的指令进行值绑定
+    Vue.prototype.bindingInstruct = function (ele) {
+        var $this = this;
+        if (ele.getAttribute('v-model')) {
+            var key = ele.getAttribute('v-model');
+            ele.value = $this.data[key];    // 绑定v-model初始值
+            var text_doms = document.querySelectorAll('[v-text="' + key + '"]');    // v-text指令元素数组
+            if (text_doms) {
+                text_doms.forEach(function (item) {
+                    item.innerText = $this.data[key];   // 绑定v-text初始值
+                })
+            }
+            // 数据双向绑定核心：Object.defineProperty
+            Object.defineProperty($this.data, key, {
+                get: function () {
+                    return ele.value;
+                },
+                set: function (value) {
+                    ele.value = value;      // 数据改变，input改变
+                    if (text_doms) {
+                        text_doms.forEach(function (item) {
+                            item.innerText = value;     // 展示此数据的dom改变内容
+                        })
+                    }
+                }
+            });
+            ele.onkeyup = function () {
+                $this.data[key] = ele.value;    // input输入触发data赋值
+            };
+        }
+        if (ele.getAttribute('v-click')) {
+            var method = ele.getAttribute('v-click');
+            ele.onclick = $this.methods[method];    // 方法事件绑定
+        }
+    };
+    // 初始化
+    Vue.prototype.init = function () {
+        var $this = this;
+        var doms = document.querySelector($this.ele).children;      // 通过构建参数ele获取dom区间
+        var v_doms = [].filter.call(doms, function (item) {
+            return item.tagName !== 'SCRIPT';      // 排除script标签
+        });
+        v_doms.forEach(function (item) {
+            $this.bindingInstruct(item);        // 对空间下每个子元素进行绑定动作
+        })
+    };
+
+    var vue = new Vue({
+        ele: '#app',
+        data: {
+            inputValue: '1223213'
+        },
+        methods: {
+            changeText: function () {
+                vue.data.inputValue = '已重置';     // 此处的this指向时触发目标dom，不知道怎么改变为vue实例
+            }
+        }
+    });
+</script>
+</body>
+</html>

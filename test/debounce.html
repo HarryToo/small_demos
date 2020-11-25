@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>防抖</title>
+</head>
+<body>
+<input type="text" id="searchInput">
+<div id="result"></div>
+
+<script>
+    function debounce(fn, time) {
+        var timer;
+        return function () {
+            if (timer) {
+                clearTimeout(timer);
+                timer = null;
+            }
+            timer = setTimeout(fn, time);
+        }
+    }
+
+
+    var c = 0;
+
+    function getResult() {
+        document.querySelector('#result').innerText = '搜索结果' + c++;
+    }
+
+    document.querySelector('#searchInput').onkeyup = debounce(getResult, 1000);
+</script>
+</body>
+</html>

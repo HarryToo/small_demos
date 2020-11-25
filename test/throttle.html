@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>节流</title>
+    <style>
+        .content {
+            height: 150vh;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+<div class="content">滚动加载</div>
+
+<script>
+    function throttle(fn, time) {
+        var timer;
+        return function () {
+            if (!timer) {
+                timer = setTimeout(() => {
+                    fn();
+                    clearTimeout(timer);
+                    timer = null;
+                }, time);
+            }
+        }
+    }
+
+
+    function loadMore() {
+        var div = document.createElement('div');
+        div.innerText = '滚动加载';
+        div.className = 'content';
+        document.body.appendChild(div);
+        console.log('加载新数据');
+    }
+
+    window.onscroll = throttle(loadMore, 1000);
+</script>
+</body>
+</html>

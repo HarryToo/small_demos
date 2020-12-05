@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>继承</title>
+</head>
+<body>
+<script>
+    // ************************** 1.子类原型指向父类实例 **************************
+    function Parent1() {
+        this.name = '父类示例属性name';
+    }
+
+    Parent1.prototype.sayName = function () {
+        console.log(this.name);
+    }
+
+    function Child1() {
+        this.age = 20;
+    }
+
+    // 导致父类实例中的引用类型属性会被所有子类实例共享
+    Child1.prototype = new Parent1();
+    Child1.prototype.constructor = Child1;
+    let child1 = new Child1();
+    console.log(child1);
+
+    // ************************** 2.子类构造函数中调用父类构造函数 **************************
+    function Parent2(name) {
+        this.name = name;
+        this.sayName = function () {
+            console.log(this.name);
+        }
+    }
+
+    function Child2(name) {
+        // 相当于只复制执行了父类的属性添加操作，属性和方法在子类实例中都单独存在，因此未能实现方法的复用
+        Parent2.call(this, name);
+        this.age = 20;
+    }
+
+    let child2 = new Child2('子类示例属性name');
+    console.log(child2);
+
+    // ************************** 3.原型和调用父类构造函数的组合方式 **************************
+    // 会调用两次父类构造函数，导致子类实例和原型上属性重复
+    function Parent3(name) {
+        this.name = name;
+    }
+
+    Parent3.prototype.sayName = function () {
+        console.log(this.name);
+    }
+
+    function Child3(name) {
+        Parent3.call(this, name);   // 再次调用父类构造函数
+        this.age = 20;
+    }
+
+    Child3.prototype = new Parent3('父类示例属性name');   // 首次调用父类构造函数
+    Child3.prototype.constructor = Child3;
+    let child3 = new Child3('子类示例属性name');
+    console.log(child3);
+
+    // ************************** 4.原型和调用父类构造函数的寄生组合方式 **************************
+    function Parent4(name) {
+        this.name = name;
+    }
+
+    Parent4.prototype.sayName = function () {
+        console.log(this.name);
+    }
+
+    function Child4(name) {
+        Parent4.call(this, name);
+        this.age = 20;
+    }
+
+    Child4.prototype = Object(Parent4.prototype);   // 避免调用父类构造函数，避免子类实例上的属性重复出现在原型上
+    Child4.prototype.constructor = Child4;
+    let child4 = new Child4('子类示例属性name');
+    console.log(child4);
+
+    // ************************** 5.ES6中新增的class和extend **************************
+    class Parent5 {
+        constructor(name) {
+            this.name_ = name;
+        }
+
+        get name() {
+            return this.name_;
+        }
+
+        set name(name) {
+            this.name_ = name;
+        }
+
+        sayName() {
+            console.log(this.name_);
+        }
+    }
+
+    class Child5 extends Parent5 {
+        constructor(name, age) {
+            super(name);
+            this.age_ = age;
+        }
+
+        get age() {
+            return this.age_;
+        }
+
+        set age(age) {
+            this.age_ = age;
+        }
+
+        static sayName() {
+            console.log('子类静态方法');
+        }
+    }
+
+    Child5.sayName();
+    let child5 = new Child5('子类示例属性name', 20);
+    console.log(child5);
+</script>
+</body>
+</html>
